@@ -1,0 +1,104 @@
+.upload_section {
+  min-height: 100vh;
+  height: 100vh;
+}
+
+.upload_wrap {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.upload {
+  display: flex;
+  min-height: 50%;
+  margin: auto;
+  width: 60vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload_form {
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 54px 55px,
+  rgba(0, 0, 0, 0.12) 0 -12px 30px,
+  rgba(0, 0, 0, 0.12) 0 4px 6px,
+  rgba(0, 0, 0, 0.17) 0 12px 13px,
+  rgba(0, 0, 0, 0.09) 0 -3px 5px;
+}
+
+.upload_form__ {
+  width: 100%;
+}
+
+.upload_form__ label {
+  display: block;
+  text-align: center;
+  font-size: 1.3rem;
+  color: black;
+  padding-top: 1rem;
+}
+
+.upload_form__ input {
+  display: block;
+  padding: 10px;
+  width: 90%;
+  margin: auto;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.price-currency-action label {
+  display: block;
+}
+
+.price-currency-action input {
+  width: 70%;
+}
+
+.price-currency-action select {
+  background-color: rgba(97, 97, 100, 0.66);
+  width: 100px;
+}
+
+.price-currency {
+  display: flex;
+  column-gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+#btn {
+  display: flex;
+  justify-content: center;
+  color: red;
+  padding-bottom: 1rem;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 0.7rem 2rem;
+  background-color: red;
+  margin-top: 0.5rem;
+}
+
+
+@media screen and (max-width: 600px) {
+  .upload {
+    width: 90vw;
+  }
+
+  .upload_form__ label {
+    font-size: 1rem;
+
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .upload {
+    width: 98vw;
+  }
+}

@@ -1,0 +1,22 @@
+.section h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  max-width: 100vw;
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url("../../components/ui/Images/landingPage_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
