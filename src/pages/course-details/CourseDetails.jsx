@@ -1,57 +1,33 @@
-import React, {useState} from "react";
-
 import {useParams} from "react-router-dom";
-import useMutate from "../../hooks/useMutate";
 import useFetchData from "../../hooks/useFetchData";
 
 import {Card} from "antd";
-import {HeartOutlined} from "@ant-design/icons";
 import {endpoints} from "../../store/endpoints";
 
 import UL from "../../components/ui/Lists/Ulist";
 import Lists from "../../components/ui/Lists/Lists";
-import Button from "../../components/ui/Button/Button";
-import {Spinner} from "../../components/template/spinner/Spinner";
+import {Spinner} from "../../components/templates/spinner/Spinner";
 import Img from "../../components/ui/Images/coursesImg/Course1.png";
 
 import styles from "./course-details.module.css";
-import Modal from "../../components/modals/Modal";
-import Purchase from "../../components/modals/buy-course/Purchase";
-import {createPortal} from "react-dom";
-import {overLay} from "../../utils/constants";
 
 const {Meta} = Card;
 
 
 const CourseDetails = () => {
-  const [showModal, setShowModal] = useState(false);
 
   const {courseId} = useParams();
   const apiGetCourseDetail = endpoints.courses.courses
-  const whitelist = `${endpoints.courses.whiteList}/${courseId}`;
 
   const {data, loading} = useFetchData(`${apiGetCourseDetail}/${courseId}`)
-
-
-  const {onCall: whiteListAction} = useMutate({postUrl: whitelist, formMethod: "POST"});
 
 
   if(!data || loading) {
     return <Spinner/>
   }
-  const displayModal = () => {
-    setShowModal((show) => !show);
-  }
 
   return (
     <>
-      {
-        showModal && createPortal(
-          <Modal>
-            <Purchase courseId={courseId} amount={data.priceDTO} onClose={displayModal}
-                      courseName={data.courseName}/>
-          </Modal>, overLay)
-      }
       <section className={styles["course-details-section"]}>
         <div className={styles["course-details-wrap"]}>
           <div className={styles["course-details"]}>
@@ -59,15 +35,6 @@ const CourseDetails = () => {
               className={styles["course-details-1"]}
               cover={<img src={Img ? Img : ""} alt=""/>}
             >
-              <div className={styles["white-list"]}>
-                <Button>Add to my whitelists</Button>
-                <Button onClick={whiteListAction}>
-                  <HeartOutlined/>
-                </Button>
-              </div>
-              <div className={styles["buy-now"]} onClick={displayModal}>
-                <Button>Buy Now</Button>
-              </div>
               <Meta
                 title={data.courseName}
                 description="Contrary to popular belief, Lorem Ipsum is not simply random
