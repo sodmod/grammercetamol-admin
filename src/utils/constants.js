@@ -30,7 +30,7 @@ export const routeName = {
   course: {
     courses: "Courses",
     "view-course": "View course",
-    "upload-course": "Upload course",
+    "upload-course": "Upload1 course",
   },
 };
 
