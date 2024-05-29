@@ -59,15 +59,13 @@
 }
 
 .file_container .file_add {
-  padding: 1rem 0.2rem 0 0.2rem;
-  text-align: center;
-  width: 10%;
-  margin: auto;
-  font-size: 1.4rem;
+  padding: 1rem 1rem 0 0.2rem;
+  text-align: end;
+  width: 100%;
 }
 
-.file_container .file_add:hover {
-  color: blue;
+.file_add svg{
+  font-size: 2rem;
 }
 
 .file_wrap_ {

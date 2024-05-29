@@ -3,6 +3,7 @@ import {useState} from "react";
 import {MinusCircleOutlined, PlusOutlined} from "@ant-design/icons";
 
 import useFetchData from "../../hooks/useFetchData";
+import useFormData from "../../hooks/useFormData.js";
 
 import Button from "../../components/ui/Button/Button.jsx";
 
@@ -11,9 +12,10 @@ import {courseDetails, filesDetails} from "../../utils/customConverter.js";
 
 import styles from "./upload.module.css";
 
-const Upload = () => {
-  // const {onSubmit, loading} = useFormData();
 
+const Upload = () => {
+  const {onSubmit, loading} = useFormData();
+  
   const {data} = useFetchData(endpoints.courses.price.currency);
 
   const [files, setFiles] = useState([filesDetails]);
@@ -29,7 +31,7 @@ const Upload = () => {
 
   // Function to handle adding a new field
   const handleAddField = () => {
-    setFiles([...files, {file: null, file_topic: "", description: ""}]);
+    setFiles([...files, {file: null, topic: "", description: ""}]);
   };
 
   // Function to handle removing a field
@@ -47,7 +49,7 @@ const Upload = () => {
   // Function to handle file topic changes
   const handleFileTopicChange = (index, event) => {
     const newFields = [...files];
-    newFields[index].file_topic = event.target.value;
+    newFields[index].topic = event.target.value;
     setFiles(newFields);
   };
 
@@ -62,6 +64,9 @@ const Upload = () => {
     e.preventDefault();
     // Assuming your form submission logic here
     console.log("upload details: => ", files, details);
+    
+    await onSubmit({files, fileDetails: details})
+    
   };
 
   return (
@@ -113,9 +118,9 @@ const Upload = () => {
             <div className={styles.upload_form}>
               {/* Multipart files dynamically rendered */}
               <div className={styles.file_container}>
-                <h2 className={styles.file_add} onClick={handleAddField}>
-                  Add
-                </h2>
+                <div className={styles.file_add} onClick={handleAddField}>
+                  <PlusOutlined className={styles.icons}/>
+                </div>
                 <div className={styles.file_wrap_}>
                   <h2>Files</h2>
                   <div className={styles.add}>
@@ -140,7 +145,7 @@ const Upload = () => {
                       <input
                         type="text"
                         placeholder="File Topic"
-                        value={file.file_topic}
+                        value={file.topic}
                         onChange={(e) => handleFileTopicChange(index, e)}
                       />
                       <textarea
@@ -162,7 +167,7 @@ const Upload = () => {
                 <Button
                   type="submit"
                   className={styles.btn}
-                  // disabled={loading}
+                  disabled={loading}
                 >
                   Submit
                 </Button>

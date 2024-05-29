@@ -20,6 +20,6 @@ export const courseDetails = {
 
 export const filesDetails = {
   file: null,
-  file_topic: "",
+  topic: "",
   description: "",
 }
