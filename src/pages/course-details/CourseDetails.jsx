@@ -20,14 +20,12 @@ const CourseDetails = () => {
   const apiGetCourseDetail = endpoints.courses.courses
 
   const {data, loading} = useFetchData(`${apiGetCourseDetail}/${courseId}`)
-
-
+  
   if(!data || loading) {
     return <Spinner/>
   }
 
   return (
-
     <section className={styles["course-details-section"]}>
       <div className={styles["course-details-wrap"]}>
         <div className={styles["course-details"]}>
@@ -63,7 +61,6 @@ const CourseDetails = () => {
         </div>
       </div>
     </section>
-
   );
 };
 
