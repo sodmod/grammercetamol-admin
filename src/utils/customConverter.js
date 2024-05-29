@@ -10,5 +10,16 @@ export function courseDetailsConverter({data}){
     "author-info": typeof authorDTO === "object" ? authorDTO : {},
     "course-contents": Array.isArray(videoIds) ? videoIds : []
   }
+}
 
+export const courseDetails = {
+  price: 0,
+  currency: "",
+  courseName: "",
+}
+
+export const filesDetails = {
+  file: null,
+  topic: "",
+  description: "",
 }
