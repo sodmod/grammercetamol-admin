@@ -13,9 +13,10 @@ import {courseDetails, filesDetails} from "../../utils/customConverter.js";
 import styles from "./upload.module.css";
 
 
+// todo: handle multipart input interface more efficient
 const Upload = () => {
   const {onSubmit, loading} = useFormData();
-  
+
   const {data} = useFetchData(endpoints.courses.price.currency);
 
   const [files, setFiles] = useState([filesDetails]);
@@ -26,6 +27,22 @@ const Upload = () => {
     setDetails((prevState) => ({
       ...prevState,
       ...newState,
+    }));
+  };
+
+  const toggleButton = () => {
+    setDetails((prevState) => ({
+      ...prevState,
+      isFree: !prevState.isFree,
+    }));
+  };
+
+  // Function to handle thumbnail changes
+  const handleThumbnailChange = (event) => {
+    const file = event.target.files[0];
+    setDetails((prevState) => ({
+      ...prevState,
+      thumbnail: file,
     }));
   };
 
@@ -64,9 +81,9 @@ const Upload = () => {
     e.preventDefault();
     // Assuming your form submission logic here
     console.log("upload details: => ", files, details);
-    
+
     await onSubmit({files, fileDetails: details})
-    
+
   };
 
   return (
@@ -84,9 +101,25 @@ const Upload = () => {
               }
               value={details.courseName}
             />
+            <label htmlFor="thumbnail">Thumbnail</label>
+            <input
+              type="file"
+              name="thumbnail"
+              id="thumbnail"
+              accept=".jpg, .jpeg"
+              onChange={handleThumbnailChange}
+              placeholder="Thumbnail"
+            />
+            <button
+              type="button"
+              className={`${styles["boolean-button"]} ${details.isFree ? styles.active : styles.inactive}`}
+              onClick={toggleButton}
+            >
+              {details.isFree ? 'Free Course' : 'Paid'}
+            </button>
 
             {/* Price action redesign and accessible easily */}
-            <div className={styles["price-currency-action"]}>
+            {!details.isFree && <div className={styles["price-currency-action"]}>
               <label htmlFor="price">Course Price</label>
               <div className={styles["price-currency"]}>
                 <input
@@ -112,7 +145,7 @@ const Upload = () => {
                     : <option>N/n</option>}
                 </select>
               </div>
-            </div>
+            </div>}
           </div>
           <div className={styles.upload}>
             <div className={styles.upload_form}>

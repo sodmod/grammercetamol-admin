@@ -35,6 +35,22 @@
   border-radius: 9px;
 }
 
+.boolean-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.boolean-button.active {
+  background-color: green;
+  color: white;
+}
+
+.boolean-button.inactive {
+  background-color: rgba(0, 72, 255, 0.7);
+  color: white;
+}
+
 
 .upload {
   display: flex;
