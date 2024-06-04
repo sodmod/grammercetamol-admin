@@ -2,8 +2,6 @@ export function courseDetailsConverter({data}){
 
   const {authorDTO, courseId, courseName, videoIds} = data;
 
-  console.log();
-
   return {
     "course-title": courseName,
     "course-key": courseId,
@@ -14,8 +12,11 @@ export function courseDetailsConverter({data}){
 
 export const courseDetails = {
   price: 0,
+  free: false,
+  summary: "",
   currency: "",
   courseName: "",
+  thumbnail: null,
 }
 
 export const filesDetails = {

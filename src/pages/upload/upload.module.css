@@ -25,7 +25,7 @@
   padding-top: 1rem;
 }
 
-.course_detail_wrap input {
+.course_detail_wrap input, textarea{
   display: block;
   padding: 10px;
   width: 80%;
@@ -33,6 +33,27 @@
   color: black;
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 9px;
+}
+
+.course_detail_wrap textarea {
+  padding: 1rem;
+}
+
+.boolean-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+}
+
+.boolean-button.active {
+  background-color: green;
+  color: white;
+}
+
+.boolean-button.inactive {
+  background-color: rgba(0, 72, 255, 0.7);
+  color: white;
 }
 
 
@@ -64,7 +85,7 @@
   width: 100%;
 }
 
-.file_add svg{
+.file_add svg {
   font-size: 2rem;
 }
 
@@ -118,7 +139,7 @@
   position: absolute;
   z-index: 2;
   transform: scale(3);
-  opacity: 0;  
+  opacity: 0;
 }
 
 .file_icons {

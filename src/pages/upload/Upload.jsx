@@ -13,9 +13,10 @@ import {courseDetails, filesDetails} from "../../utils/customConverter.js";
 import styles from "./upload.module.css";
 
 
+// todo: handle multipart input interface more efficient
 const Upload = () => {
   const {onSubmit, loading} = useFormData();
-  
+
   const {data} = useFetchData(endpoints.courses.price.currency);
 
   const [files, setFiles] = useState([filesDetails]);
@@ -26,6 +27,23 @@ const Upload = () => {
     setDetails((prevState) => ({
       ...prevState,
       ...newState,
+    }));
+  };
+
+  // function to handle toggle button changes
+  const toggleButton = () => {
+    setDetails((prevState) => ({
+      ...prevState,
+      free: !prevState.free,
+    }));
+  };
+
+  // Function to handle thumbnail changes
+  const handleThumbnailChange = (event) => {
+    const file = event.target.files[0];
+    setDetails((prevState) => ({
+      ...prevState,
+      thumbnail: file,
     }));
   };
 
@@ -64,9 +82,9 @@ const Upload = () => {
     e.preventDefault();
     // Assuming your form submission logic here
     console.log("upload details: => ", files, details);
-    
+
     await onSubmit({files, fileDetails: details})
-    
+
   };
 
   return (
@@ -84,9 +102,31 @@ const Upload = () => {
               }
               value={details.courseName}
             />
+            <label htmlFor="thumbnail">Thumbnail</label>
+            <input
+              type="file"
+              name="thumbnail"
+              id="thumbnail"
+              accept=".jpg, .jpeg"
+              onChange={handleThumbnailChange}
+              placeholder="Thumbnail"
+            />
+            <label htmlFor="thumbnail">Course Summary</label>
+            <textarea
+              placeholder="Summary of your course" value={details.summary}
+              onChange={(e) =>
+                detailChangeHandler({summary: e.target.value})}
+            />
+            <button
+              type="button"
+              className={`${styles["boolean-button"]} ${details.free ? styles.active : styles.inactive}`}
+              onClick={toggleButton}
+            >
+              {details.free ? 'Free Course' : 'Paid'}
+            </button>
 
             {/* Price action redesign and accessible easily */}
-            <div className={styles["price-currency-action"]}>
+            {!details.free && <div className={styles["price-currency-action"]}>
               <label htmlFor="price">Course Price</label>
               <div className={styles["price-currency"]}>
                 <input
@@ -112,10 +152,10 @@ const Upload = () => {
                     : <option>N/n</option>}
                 </select>
               </div>
-            </div>
+            </div>}
           </div>
           <div className={styles.upload}>
-            <div className={styles.upload_form}>
+          <div className={styles.upload_form}>
               {/* Multipart files dynamically rendered */}
               <div className={styles.file_container}>
                 <div className={styles.file_add} onClick={handleAddField}>
