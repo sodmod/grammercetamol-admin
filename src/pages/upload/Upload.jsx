@@ -30,10 +30,11 @@ const Upload = () => {
     }));
   };
 
+  // function to handle toggle button changes
   const toggleButton = () => {
     setDetails((prevState) => ({
       ...prevState,
-      isFree: !prevState.isFree,
+      free: !prevState.free,
     }));
   };
 
@@ -110,16 +111,22 @@ const Upload = () => {
               onChange={handleThumbnailChange}
               placeholder="Thumbnail"
             />
+            <label htmlFor="thumbnail">Course Summary</label>
+            <textarea
+              placeholder="Summary of your course" value={details.summary}
+              onChange={(e) =>
+                detailChangeHandler({summary: e.target.value})}
+            />
             <button
               type="button"
-              className={`${styles["boolean-button"]} ${details.isFree ? styles.active : styles.inactive}`}
+              className={`${styles["boolean-button"]} ${details.free ? styles.active : styles.inactive}`}
               onClick={toggleButton}
             >
-              {details.isFree ? 'Free Course' : 'Paid'}
+              {details.free ? 'Free Course' : 'Paid'}
             </button>
 
             {/* Price action redesign and accessible easily */}
-            {!details.isFree && <div className={styles["price-currency-action"]}>
+            {!details.free && <div className={styles["price-currency-action"]}>
               <label htmlFor="price">Course Price</label>
               <div className={styles["price-currency"]}>
                 <input
@@ -148,7 +155,7 @@ const Upload = () => {
             </div>}
           </div>
           <div className={styles.upload}>
-            <div className={styles.upload_form}>
+          <div className={styles.upload_form}>
               {/* Multipart files dynamically rendered */}
               <div className={styles.file_container}>
                 <div className={styles.file_add} onClick={handleAddField}>

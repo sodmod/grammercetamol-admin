@@ -11,11 +11,12 @@ export function courseDetailsConverter({data}){
 }
 
 export const courseDetails = {
-  isFree: false,
-  thumbnail: null,
   price: 0,
+  free: false,
+  summary: "",
   currency: "",
   courseName: "",
+  thumbnail: null,
 }
 
 export const filesDetails = {
