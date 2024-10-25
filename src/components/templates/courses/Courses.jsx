@@ -1,13 +1,11 @@
-import AllCourse from "./all-course/AllCourse";
-
-import styles from "./courses.module.css";
+import ViewCourses from "./all-course/ViewCourses.jsx";
 
 // Displays all courses including the available course and registered course
 const Courses = () => {
   return (
-    <div className={styles.courses}>
-      <AllCourse/>
-    </div>
+
+    <ViewCourses/>
+
   );
 };
 

@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   word-wrap: break-word;
   width: 100% !important;
+  height: 100%;
 }
 
 code {

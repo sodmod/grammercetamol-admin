@@ -28,11 +28,11 @@ const useFormData = () => {
         const formData = new FormData();
 
         // append file and its details
-        files.forEach((file,index) => {
+        files.forEach((file, index) => {
           formData.append(`files[${index}].file`, file.file);
           formData.append(`files[${index}].topic`, file.topic);
           formData.append(`files[${index}].description`, file.description);
-          
+
         });
         Object.keys(fileDetails).forEach((key) => {
           formData.append(key, fileDetails[key]);

@@ -1,42 +1,40 @@
-import {NavLink} from "react-router-dom";
 import PropTypes from "prop-types";
+import Card from 'react-bootstrap/Card';
 
 import Img from "../../../ui/Images/coursesImg/Course1.png";
+import {Col, Row} from "react-bootstrap";
+import {NavLink} from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Icons from "../../../ui/Icons/Icons.jsx";
 
-import styles from "./eachcourse.module.css";
 
-
-const EachCourse = ({course, to}) => {
+const EachCourse = ({course, to, buttonText}) => {
   const {courseId, lesson, courseTitle} = course;
 
   return (
-    <NavLink
-      className={styles.each}
-      to={`${to}${courseId}`}
-    >
-      <div className={styles.grid_item}>
-        <div
-          className={styles.each_course_image}
-          style={{
-            backgroundImage: `url(${Img})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            width: "inherit",
-            height: "200px",
-            position: "relative",
-            borderRadius: "10px 10px 0px 0px",
-          }}
-        ></div>
-        <div className={styles.eachcourse_container_info}>
-          <div className={styles.each_course_title}>{courseTitle}</div>
-          <div className={styles.info_details} style={{fontSize: "25px"}}>
-            <p className={styles.course_stack}> {lesson} Lessons</p>
-            {/* <p className={styles.course_time}>2hrs 45min</p> */}
-          </div>
-        </div>
-      </div>
-    </NavLink>
+    <Card className="bg-dark shadow">
+      <Card.Img variant="top" src={Img}/>
+      <Card.Body className="">
+        <Card.Title>{courseTitle}</Card.Title>
+        <Row className="pb-5">
+          <Col>
+            <span className="pe-1">
+              <Icons icons="fa-solid fa-layer-group"/>
+            </span>
+            {`${lesson} Lessons`}
+          </Col>
+          <Col>
+            <span className="pe-1">
+              <Icons icons="fa-solid fa-clock"/>
+            </span>
+            Time interface
+          </Col>
+        </Row>
+        <NavLink to={`${to}${courseId}`} className="text-decoration-none">
+          <Button variant="danger">{buttonText}</Button>
+        </NavLink>
+      </Card.Body>
+    </Card>
   );
 };
 
@@ -47,6 +45,7 @@ EachCourse.propTypes = {
     courseTitle: PropTypes.string.isRequired,
   }).isRequired,
   to: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired,
 };
 
 export default EachCourse;

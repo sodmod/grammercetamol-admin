@@ -1,7 +1,7 @@
 // import Registration1 from "./Registration1"
 import Register from "./Register.jsx";
 
-function Registration () {
+function Registration(){
   return <Register/>
 }
 

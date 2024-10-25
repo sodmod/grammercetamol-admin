@@ -15,7 +15,8 @@ export const endpoints = {
     view: {
       details: "",
     },
-    registered: `${courses}/registered`,
+    registered: `/${courses}/registered`,
+    whitelisted: `/${courses}/whitelisted`,
     price: {
       price: `${courses}/${price}`,
       currency: `${price}/currency`
