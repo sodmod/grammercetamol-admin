@@ -6,18 +6,19 @@ import {store} from "./config/index.js";
 import {router} from "./route/route.config.js";
 
 import {Spinner} from "./components/templates/spinner/Spinner.jsx";
-
-import styles from './App.module.css'
+import {ThemeProvider} from "react-bootstrap";
 
 function App(){
   return (
-    <div className={styles.all}>
+    <ThemeProvider breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
+                   minBreakpoint="xxs">
       <Provider store={store}>
         <Suspense fallback={<Spinner/>}>
           <RouterProvider router={router}/>
         </Suspense>
       </Provider>
-    </div>
+    </ThemeProvider>
+
   );
 }
 

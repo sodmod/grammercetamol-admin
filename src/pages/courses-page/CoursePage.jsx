@@ -1,12 +1,13 @@
-import Courses from "../../components/templates/courses/Courses";
+import {Container} from "react-bootstrap";
+import {Outlet} from "react-router-dom";
+import "./course root container.css";
 
-import styles from "./coursepage.module.css";
-
-const CoursesPage = () => {
+function CoursePage(){
   return (
-    <section className={styles.section}>
-      <Courses/>
-    </section>
+    <Container fluid className="bg-dark course-root-container p-0 m-0">
+      <Outlet/>
+    </Container>
   );
-};
-export default CoursesPage;
+}
+
+export default CoursePage;

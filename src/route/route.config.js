@@ -1,10 +1,20 @@
 import {createBrowserRouter} from "react-router-dom";
 import {routePath} from "../utils/constants.js";
 
-import Root from "../pages/Root.jsx";
-import {CourseDetails, CoursesPage, LandPage, LoginPage, Registration, Upload} from "../pages/index.js";
+import {
+  ContinuedWatching,
+  Courses,
+  Dashboard,
+  LoginPage,
+  OverView,
+  Profile,
+  ProfileRoot,
+  Registered,
+  Registration,
+  Upload,
+} from "../pages/index.js";
 import Error from "../pages/errors/ErrorPage.jsx";
-import CourseRootLayout from "../pages/CourseRootLayout";
+import CoursePage from "../pages/courses-page/CoursePage.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -13,41 +23,48 @@ export const router = createBrowserRouter([
     children: [
       {
         path: routePath.landpage,
-        Component: Root,
+        Component: Dashboard,
         children: [
-          
-          // home page
-          {index: true, Component: LandPage},
-          
-          // course
+          {
+            index: true, Component: OverView,
+          },
           {
             path: routePath.course.courses,
-            Component: CourseRootLayout,
+            Component: CoursePage,
             children: [
-              
               // course page
-              {index: true, Component: CoursesPage},
-              
-              // course detail
               {
-                path: `${routePath.course.view}:courseId`,
-                Component: CourseDetails
+                path: "registered",
+                Component: Registered
               },
+              {index: true, Component: Courses},
+              {path: "viewAllcourse", Component: ContinuedWatching},
             ]
           },
           {
             path: routePath.course["upload-course"],
             Component: Upload
+          },
+          {
+            path: routePath.profile["my-profile"],
+            Component: ProfileRoot,
+            children: [
+              {
+                // profile page
+                index: true, Component: Profile
+              },
+              {}
+            ]
           }
         ]
       },
-      
-      // login 
+
+      // login
       {
         path: routePath.auth.login,
         Component: LoginPage
       },
-      
+
       // register
       {
         path: routePath.auth.register,

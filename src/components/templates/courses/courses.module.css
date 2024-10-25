@@ -58,5 +58,6 @@
 @media (max-width: 615px) {
   .grid_container {
     grid-template-columns: repeat(1, 1fr);
+    padding: 0;
   }
 }

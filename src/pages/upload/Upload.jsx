@@ -155,7 +155,7 @@ const Upload = () => {
             </div>}
           </div>
           <div className={styles.upload}>
-          <div className={styles.upload_form}>
+            <div className={styles.upload_form}>
               {/* Multipart files dynamically rendered */}
               <div className={styles.file_container}>
                 <div className={styles.file_add} onClick={handleAddField}>

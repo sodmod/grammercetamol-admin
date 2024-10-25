@@ -2,15 +2,12 @@ import {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {CgProfile} from "react-icons/cg";
 
-import {Logo} from "../../ui/constants.js";
-
 import {getCookie} from "../../../store/storage";
 import {navbarContent, routePath} from "../../../utils/constants";
 
 import UL from "../../ui/Lists/Ulist";
 import Icons from "../../ui/Icons/Icons";
 import Lists from "../../ui/Lists/Lists";
-import Button from "../../ui/Button/Button";
 
 import styles from "./NavBar.module.css";
 
@@ -26,8 +23,8 @@ const NavBar = () => {
     ? `${styles.navmenu} ${styles.active}`
     : `${styles.navmenu}`;
 
-
   let isLoggedIn = false;
+
   if(getCookie("*") && getCookie("*").length > 0) {
     isLoggedIn = true;
   }
@@ -37,26 +34,25 @@ const NavBar = () => {
     <nav className={styles.navitems}>
       <div className={styles.logo}>
         <NavLink to={routePath.landpage}>
-          <img src={Logo} alt=""/>
+
         </NavLink>
       </div>
       <div className={styles.hambuger} onClick={handleClick}>
         <Icons icons={icons}/>
       </div>
       <UL className={isClicked}>
-        {navbarContent.map((navbar, key)=> (
-          <Lists key = {key}>
+        {navbarContent.map((navbar, key) => (
+          <Lists key={key}>
             <NavLink
               onClick={handleClick}
-              to={navbar.to}
+              to={navbar.dir}
               className={({isActive}) => (isActive ? styles.active : undefined)}
               end
             >
-              {navbar.dir}
+              {navbar.dirName}
             </NavLink>
           </Lists>
         ))}
-        <Button className={styles.btn} onClick={handleClick}>What do you want to learn?</Button>
         <Lists>
           {!isLoggedIn ? (
             <NavLink
@@ -70,7 +66,7 @@ const NavBar = () => {
             </NavLink>
           ) : (
             <NavLink to={routePath.auth.login}>
-              {/* <Button className={styles.btn}>My Profile</Button>
+              {/* <Button className={styles.btn}>My ProfileRoot</Button>
                */}
               <div
                 onClick={handleClick}

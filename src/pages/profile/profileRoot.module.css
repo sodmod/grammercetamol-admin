@@ -1,0 +1,104 @@
+/*ProfileRoot styling section*/
+.profile-section {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 0 5px;
+}
+
+/*Hambuger*/
+.profile-hambuger {
+  display: none;
+  cursor: pointer;
+
+}
+
+.profile-hambuger i {
+  font-size: 1.3rem;
+  color: white;
+}
+
+/*profile side navigation*/
+.profile-side-nav {
+  width: 20vw;
+}
+
+/*profile side bar navigation content*/
+.profile-nav-content {
+  background-color: black;
+  width: 90%;
+  padding-top: 3rem;
+  text-align: center;
+  margin: auto;
+}
+
+.profile-nav-content a:hover,
+.profile-nav-content a.active {
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline;
+  text-decoration-color: red;
+}
+
+/*profile side bar navigation lists*/
+.profile-nav-content .profile-nav-content-list {
+  padding-bottom: 1.3rem;
+}
+
+/*to handle the size of the anchor tags*/
+.profile-nav-content .profile-nav-content-list a {
+  font-size: 1.4em;
+}
+
+/*profile outlet, design for other sub profile outlets */
+.profile-outlet {
+
+}
+
+/*media queries*/
+@media screen and (max-width: 680px) {
+  .profile-nav-content {
+    background-color: black;
+    width: 100%;
+    padding-top: 3rem;
+    text-align: center;
+  }
+
+  .profile-nav-content .profile-nav-content-list a {
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  /*.profile-side-nav {*/
+  /* display: none;*/
+  /*}*/
+  .profile-nav-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: -100%;
+    position: absolute;
+    width: 90%;
+    background-color: rgba(17, 17, 18, 0.359);
+    top: 5rem;
+    backdrop-filter: blur(20px);
+    transition: all 0.5s ease-in-out;
+    gap: 1rem;
+    padding: 3rem;
+  }
+
+  .profile-nav-content li a {
+    font-size: 1rem;
+  }
+
+  .profile-nav-content.active {
+    left: 0;
+  }
+
+  .profile-hambuger {
+    display: block;
+    margin-right: 70px;
+    z-index: 12;
+  }
+}

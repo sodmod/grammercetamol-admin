@@ -33,7 +33,7 @@
 .navmenu a:hover,
 .navmenu a.active {
   transition: all 0.3s ease-in-out;
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-color: red;
 }
 
@@ -70,7 +70,7 @@
     gap: 1rem;
     padding: 3rem;
   }
-  
+
   .navmenu li a {
     font-size: 1rem;
   }

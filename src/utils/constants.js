@@ -3,7 +3,10 @@ export const overLay = document.getElementById("overlays");
 export const routePath = {
   landpage: "/",
   contact: "contact",
-  profile: "profile",
+  profile: {
+    "my-profile": "/profile",
+    "change-password": "change-password",
+  },
 
   auth: {
     login: "/login",
@@ -42,17 +45,98 @@ export const time = {
   },
 };
 
+export const homeDir = {
+  dirName: "Grammercetamol",
+  dir: routePath.landpage
+}
+
+export const mobileNavContent = [
+  {
+    dirName: "Courses",
+    to: "/courses",
+  },
+  {
+    dirName: "Profile",
+    to: "",
+
+  },
+  {
+    dirName: "Students",
+    to: "",
+
+  }, {
+    dirName: "Upload",
+    to: "",
+  },
+]
+
 export const navbarContent = [
   {
-    "dir": "Home",
-    "to": routePath.landpage
+    dirName: "Courses",
+    icon: "fa-solid fa-book",
+    dir: [
+      {
+        menu: "Your Courses",
+        to: routePath.course.courses
+      },
+    ],
   },
   {
-    "dir": "Courses",
-    "to": routePath.course.courses
+    dirName: "Upload",
+    icon: "fa-solid fa-upload",
+    dir: [
+      {
+        "menu": "Create New Course",
+        "to": "new-course",
+      },
+    ],
   },
-  {
-    "dir": routeName.course["upload-course"],
-    "to": routePath.course["upload-course"]
-  }
+  // {
+  //   dirName: "Profile",
+  //   icon: "",
+  //   dir: [
+  //     {
+  //       "menu": "Registered Course",
+  //       "to": "registered-course",
+  //     },
+  //     {
+  //       "menu": "Whitelisted Courses",
+  //       "to": "registered-course",
+  //     }
+  //   ],
+  // },
+  // {
+  //   dirName: "Students",
+  //   icon: "",
+  //   dir: [
+  //     {
+  //       "menu": "Registered Course",
+  //       "to": "registered-course",
+  //     },
+  //     {
+  //       "menu": "Whitelisted Courses",
+  //       "to": "registered-course",
+  //     }
+  //   ],
+  // },
+
 ];
+
+export const profileContent = [
+  {
+    dir: "My ProfileRoot",
+    to: routePath.profile["profile-details"]
+  },
+  {
+    dir: "My ProfileRoot",
+    to: routePath.profile["profile-details"]
+  },
+  {
+    dir: "My ProfileRoot",
+    to: routePath.profile["profile-details"]
+  },
+  {
+    dir: "My ProfileRoot",
+    to: routePath.profile["profile-details"]
+  }
+]

@@ -32,7 +32,6 @@ const useLogin = () => {
       console.log("login response", response);
 
       if(!response.error) {
-        setCookie("*", `${response?.data?.data?.loggedIn}`, time.auth.loggedIn);
         setLocalStorage(
           "**",
           JSON.stringify(userInfoToLowerCase(response?.data?.data))
