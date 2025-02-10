@@ -15,7 +15,6 @@ const Registered = lazy(()=> import("./courses-page/registered/Registered"))
 export {
   Dashboard,
   OverView,
-  CoursesPage,
   Upload,
   Registration,
   LoginPage,
