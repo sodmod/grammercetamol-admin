@@ -11,10 +11,10 @@ import {
   ProfileRoot,
   Registered,
   Registration,
-  Upload,
 } from "../pages/index.js";
 import Error from "../pages/errors/ErrorPage.jsx";
 import CoursePage from "../pages/courses-page/CoursePage.jsx";
+import Upload from "../pages/upload/Upload.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
                 // profile page
                 index: true, Component: Profile
               },
-              {}
+              // {}
             ]
           }
         ]

@@ -15,11 +15,6 @@ body {
   height: 100%;
 }
 
-code {
-  /* font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-  monospace; */
-}
-
 * {
   box-sizing: border-box;
   text-decoration: none;
